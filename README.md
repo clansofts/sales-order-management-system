@@ -1,6 +1,6 @@
-# SalesOrderManagementSystem
+# Sales Order Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1. The Project using Angular 2 and WebAPI and SQL Server 2012 and database is AdventureWorks2012 sample database. You can download SalesOrderWebApi program from  SalesOrderWebApi repository which is a complete WebApi application that covers CRUD and Authentication. This project was created by myself in order to learn Angular 2 from scratch.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
