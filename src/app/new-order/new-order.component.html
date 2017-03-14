@@ -1,0 +1,170 @@
+<br />
+<br />
+<br />
+<br />
+<br />
+<h3 style="margin-left:200px;">New Sales Order</h3>
+<div class="bs-example">
+	<form class="form-horizontal" style="border:1px solid;border-color:grey;">
+	<br />
+	<br />
+	<div class="form-group">
+  		<label class="control-label col-xs-2">Revision No:</label>
+  		<div class="col-xs-10">
+  		  		<input type="number" #revision class="form-control" placeholder="Revision No" aria-describedby="basic-addon1" style="width:120px">
+  		</div>
+    </div>
+ 	<div class="form-group">	 
+  		<label class="control-label col-xs-2">Order Date:</label>
+  		<div class="col-xs-10">
+  		<ng2-datepicker name="order" [options]="options" [(ngModel)]="orderdate"></ng2-datepicker>
+  		</div>
+	</div>
+	<div class="form-group">
+  		<label class="control-label col-xs-2">Due Date:</label>
+  		<div class="col-xs-10">
+  		<ng2-datepicker name="due" [options]="options" [(ngModel)]="duedate"></ng2-datepicker>
+  		</div>
+  	</div>
+  	<div class="form-group">
+		<label class="control-label col-xs-2">Ship Date:</label>
+  		<div class="col-xs-10">
+  		<ng2-datepicker name="ship" [options]="options" [(ngModel)]="shipdate"></ng2-datepicker>
+  		</div>
+  	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">Status:</label>
+  		<div class="col-xs-10">
+	  	<input type="number" #status class="form-control" placeholder="Status" aria-describedby="basic-addon1" style="width:75px;">
+	  	</div>
+	</div>
+	<div class="form-group">
+  		<label class="control-label col-xs-2">Online Flag:</label>
+	  	<div class="col-xs-10">
+	  	Yes&nbsp;<input type="radio" #flagyes name="flag" aria-describedby="basic-addon1" checked="checked" style="width:20px;">
+	  	No&nbsp;<input type="radio" #flagno name="flag" aria-describedby="basic-addon1"  style="width:20px;">
+	  	</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">SO Number:</label>
+  		<div class="col-xs-10">
+	  	<input type="text" #sonumber class="form-control" placeholder="SO Number" aria-describedby="basic-addon1" style="width:120px;">
+	  	</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">PO Number:</label>
+  		<div class="col-xs-10">
+	  	<input type="text" #ponumber class="form-control" placeholder="PO Number" aria-describedby="basic-addon1" style="width:120px;">
+	  	</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">A/c Number:</label>
+  		<div class="col-xs-10">
+	  	<input type="text" #accnumber class="form-control" placeholder="Account Number" aria-describedby="basic-addon1" style="width:140px;">
+	  	</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">Customer ID:</label>
+  		<div class="col-xs-10">
+	  	<input type="number" #customerid class="form-control" placeholder="Customer ID" aria-describedby="basic-addon1" style="width:150px;">
+	  	</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">Sales Person:</label>
+  		<div class="col-xs-10">
+	  	<input type="number" #salesperson class="form-control" placeholder="Sales Person" aria-describedby="basic-addon1" style="width:150px;">
+	  	</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">Territory:</label>
+  		<div class="col-xs-10">
+	  		  	<input ng2-auto-complete
+                   [source]="terr"
+                   [list-formatter]="autocompleListFormatterterr"
+                   (valueChanged)="valueChanged($event)"
+                   value-property-name="TerritoryID"
+                   display-property-name="Group" 
+                   placeholder="Territory"
+                   class="form-control"
+	  			   aria-describedby="basic-addon1" style="width:350px;"
+	  			   name="modelterr" [(ngModel)]="modelterr">
+	  	</div>  
+	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">Billing Address:</label>
+  		<div class="col-xs-10">
+	  	<textarea #billing placeholder="Billing Address" aria-describedby="basic-addon1" rows="4" cols="50"></textarea>
+	  	</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">Shipping Address:</label>
+  		<div class="col-xs-10">
+	  	<textarea #shipping placeholder="Shipping Address" aria-describedby="basic-addon1" rows="4" cols="50"></textarea>
+	  	</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">Ship Method:</label>
+			<div class="col-xs-10">
+			<select name="shipmethod" class="form-control" style="width:240px;" [(ngModel)]="shipmethod">
+			  <option *ngFor="let s of shipmethods" [value]="s.ShipMethodID">{{s.Name}}</option>
+			</select> 
+  			</div>  
+  	</div>
+	<div class="form-group">
+		<label class="control-label col-xs-2">Credit Card:</label>
+  		<div class="col-xs-10">
+	  	<input ng2-auto-complete 
+                   [source]="cards"
+                   [list-formatter]="autocompleListFormatter"
+                   value-property-name="CreditCardID"
+                   display-property-name="CardType"
+                   placeholder="Credit Credit"
+                   class="form-control"
+	  			   aria-describedby="basic-addon1" style="width:350px;"
+	  			   name="modelcard" [(ngModel)]="modelcard">
+	  	</div>  
+	</div>
+	<div class="form-group">  
+		<label class="control-label col-xs-2">Currency:</label>
+			<div class="col-xs-10">
+			<select name="curr" class="form-control" style="width:240px;" [(ngModel)]="curr">
+			  <option *ngFor="let c of currencies" [value]="c.CurrencyCode">{{c.Name}}</option>
+			</select>
+  			</div> 
+	</div>
+	<div class="form-group">
+  		<label class="control-label col-xs-2">Sub Total</label> 
+  		<div class="col-xs-10"> 
+  		<input type="number" #subtotal class="form-control" placeholder="Sub Total" aria-describedby="basic-addon1" style="width:150px;">
+  		</div>
+    </div>
+    <div class="form-group">
+  		<label class="control-label col-xs-2">Tax Amount:</label>
+  		<div class="col-xs-10">
+  		<input type="number" #taxamount class="form-control" placeholder="Tax Amount" aria-describedby="basic-addon1" style="width:150px;">
+  		</div>
+    </div>
+    <div class="form-group">
+  		<label class="control-label col-xs-2">Freight:</label>
+  		<div class="col-xs-10">
+  		<input type="number" #freight class="form-control" placeholder="Freight" aria-describedby="basic-addon1" style="width:150px;">
+  		</div>
+    </div>
+    <div class="form-group">
+  		<label class="control-label col-xs-2">Total Due:</label>
+  		<div class="col-xs-10">
+  		<input type="number" #totaldue class="form-control" placeholder="Total Due" aria-describedby="basic-addon1" style="width:150px;">
+  		</div>
+    </div>
+    <div align="center">
+    <button type="button" class="btn btn-success"
+    	(click)="SaveOrder(revision,status,flagyes,flagno,
+    	                   sonumber,ponumber,accnumber,customerid,
+    	                   salesperson,billing,shipping,subtotal,
+    	                   taxamount,freight,totaldue)">Save Order</button>
+    </div>
+    <br />
+    <br />
+</form>
+    <br />
+</div>

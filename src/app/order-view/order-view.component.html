@@ -1,0 +1,63 @@
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="Container">
+	<h3>Sales Order</h3>
+	<form class="form-horizontal" style="border:1px solid;border-color:grey">
+	<br />
+	<br />
+	<div *ngFor="let order of salesorder">
+		<div class="form-group">
+			<label class="control-label col-sm-2">Sales Order ID:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.SalesOrderID}}</label>
+			<label class="control-label col-sm-2">Revision No:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.RevisionNumber}}</label>
+			<label class="control-label col-sm-2">Order Date:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.OrderDate | date: 'dd/MM/yyyy'}}</label>
+  	    </div>
+  	    <div class="form-group">
+  		    <label class="control-label col-sm-2">Due Date:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.DueDate | date: 'dd/MM/yyyy'}}</label>
+			<label class="control-label col-sm-2">Ship Date:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.ShipDate | date: 'dd/MM/yyyy'}}</label>
+  		    <label class="control-label col-sm-2">Status:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.Status}}</label>
+		</div>
+		<div class="form-group">
+  		    <label class="control-label col-sm-2">Flag:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.OnlineOrderFlag}}</label>
+			<label class="control-label col-sm-2">SO Number:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.SalesOrderNumber}}</label>
+  		    <label class="control-label col-sm-2">PO Number:</label>
+  			<label class="col-sm-10 form-control" style="width:130px;">{{order.PurchaseOrderNumber}}</label>
+  		</div>
+  		<div class="form-group">
+  		    <label class="control-label col-sm-2">A/c Number:</label>
+  			<label class="col-sm-10 form-control" style="width:140px;">{{order.AccountNumber}}</label>
+  		    <label class="control-label col-sm-2">Customer ID:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.CustomerID}}</label>
+ 		    <label class="control-label col-sm-2">Sub Total:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.SubTotal | currency : 'USD' : 2}}</label>
+  		</div>
+  		<div class="form-group">
+ 		    <label class="control-label col-sm-2">Tax Amt:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.TaxAmt | currency : 'USD' : 2}}</label>
+ 		    <label class="control-label col-sm-2">Freight:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.Freight | currency : 'USD' : 2}}</label>
+ 		    <label class="control-label col-sm-2">Total Due:</label>
+  			<label class="col-sm-10 form-control" style="width:100px;">{{order.TotalDue | currency : 'USD' : 2}}</label>
+  		</div>
+  		<div align="center">
+			<a class="btn btn-primary" [routerLink]="['/salesorder']">Back</a>
+		</div>
+		<br />
+  		<br />
+  	</div>
+  	</form>	
+</div>
+	
+	

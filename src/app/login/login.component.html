@@ -1,0 +1,29 @@
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	
+ 
+	
+		<div class="modal show" data-toggle="modal" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Register Account</h1><br>
+				  <form>
+					<input type="text" name="username" placeholder="Username" #username>
+					<input type="password" name="password" placeholder="Password" #password>
+					<input type="password" name="confirmpassword" placeholder="Confirm Password" #confirmpassword>
+					<input type="submit" class="login loginmodal-submit" (click)="Register(username.value,password.value,confirmpassword.value)" data-dismiss="modal" />
+				  </form>
+					<input type="text" name="message" [(ngModel)]="message" style="display:none;"/>
+				  <div class="login-help">
+					<h4 align="center" style="color:red;">{{message}}</h4>
+				  </div>
+				</div>
+			</div>
+		  </div>  
+		  
+		  

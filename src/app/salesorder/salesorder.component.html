@@ -1,0 +1,90 @@
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container">                                                                                    
+  <div class="table-responsive">
+  <div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">Sales Order ID#</span>
+  <input type="text" style="width:250px;" class="form-control" #orderno placeholder="Enter Sales Order ID" aria-describedby="basic-addon1">
+  &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" (click)="onSearch(orderno.value)">Search</button>
+  &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-success" (click)="onFullSearch()">All Orders</button>
+  &nbsp;&nbsp;&nbsp;<a class="btn btn-primary" [routerLink]="['/neworder']">New Order</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+  </div>
+  <br />
+  <br />   
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>SO Number</th>
+        <th>Order Date</th>
+        <th>PO Number</th>
+        <th>Customer</th>
+        <th>Sales Person</th>
+        <th>Sales Total</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of salesorder | paginate: { itemsPerPage:6, currentPage: p }">
+        <td>{{order.SalesOrderID}}</td>
+        <td>{{order.SalesOrderNumber}}</td>
+        <td>{{order.OrderDate}}</td>
+        <td>{{order.PurchaseOrderNumber}}</td>
+        <td>{{order.CustomerID}}</td>
+        <td>{{order.SalesPersonID}}</td>
+        <td>{{order.TotalDue}}</td>
+        <td><button type="button" class="btn btn-info btn-sm" (click)="onSelect(order.SalesOrderID)">Sales Items</button></td>
+        <td><a class="btn btn-info btn-sm" [routerLink]="['/order-view', order.SalesOrderID]">View Order</a></td>
+        <td><button type="button" class="btn btn-success btn-sm">Edit</button></td>
+        <td><button type="button" class="btn btn-danger btn-sm">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+    <div align="center"><pagination-controls (pageChange)="p = $event"></pagination-controls></div>
+</div>
+
+<br />
+<br />
+<div *ngIf="show">
+<div class="container">                                                                                    
+  <div class="table-responsive">         
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Order Detail#</th>
+        <th>Carrier #</th>
+        <th>Order Qty</th>
+        <th>Product Name</th>
+        <th>Special Offer</th>
+        <th>Unit Price</th>
+        <th>UP Discount</th>
+        <th>Line Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of salesdetail">
+        <td>{{detail.SalesOrderID}}</td>
+        <td>{{detail.SalesOrderDetailID}}</td>
+        <td>{{detail.CarrierTrackingNumber}}</td>
+        <td>{{detail.OrderQty}}</td>
+        <td>{{detail.Name}}</td>
+        <td>{{detail.Description}}</td>
+        <td>{{detail.UnitPrice}}</td>
+        <td>{{detail.UnitPriceDiscount}}</td>
+        <td>{{detail.LineTotal}}</td>
+        <td><button type="button" class="btn btn-success">Edit</button>
+        <td><button type="button" class="btn btn-danger">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
